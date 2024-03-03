@@ -92,8 +92,8 @@ void main() {
 
     await tester.pump(const Duration(milliseconds: 1000));
 
-    final scaffoldState =
-        tester.firstState(find.byKey(const Key('animeHomeScreenKey')));
+    var scaffoldState =
+        tester.firstState(find.byType(Scaffold)) as ScaffoldState;
 
     await tester.pump(const Duration(milliseconds: 1000));
 
@@ -102,18 +102,28 @@ void main() {
     expect(find.text('Discover'), findsOneWidget);
     expect(find.text('Sousou no Frieren'), findsOneWidget);
 
-    const DetailsRoute(1).go(scaffoldState.context);
+    await tester.pump(const Duration(milliseconds: 1000));
+
+    const DetailsRoute(1).go(
+        (tester.firstState(find.byType(Scaffold)) as ScaffoldState).context);
     await tester.pump(const Duration(milliseconds: 1000));
     expect(find.text('Sousou no Frieren'), findsOneWidget);
 
-    const CharactersRoute(1).go(scaffoldState.context);
+    await tester.pump(const Duration(milliseconds: 1000));
+
+    const CharactersRoute(1).go(
+        (tester.firstState(find.byType(Scaffold)) as ScaffoldState).context);
     await tester.pump(const Duration(milliseconds: 1000));
     expect(find.text('Characters'), findsOneWidget);
 
-    scaffoldState.context.pop();
     await tester.pump(const Duration(milliseconds: 1000));
 
-    const ReviewsRoute(1).push(scaffoldState.context);
+    const DetailsRoute(1).go(
+        (tester.firstState(find.byType(Scaffold)) as ScaffoldState).context);
+    await tester.pump(const Duration(milliseconds: 1000));
+
+    const ReviewsRoute(1).push(
+        (tester.firstState(find.byType(Scaffold)) as ScaffoldState).context);
     await tester.pump(const Duration(milliseconds: 1000));
     expect(find.text('Reviews'), findsOneWidget);
   });
