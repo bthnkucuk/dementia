@@ -1,4 +1,11 @@
 ## MINOR FIXES
+- Title: crashlytics, talker, firebase for all flavors
+- Description: 
+- Date: 03.03.2024
+- Version: 1.0.0+8
+- Author: ([bthnkucuk](https://github.com/bthnkucuk/dementia/commit/b402dbd))
+
+## MINOR FIXES
 - Title: README.MD update
 - Description: 
 - Date: 03.03.2024
