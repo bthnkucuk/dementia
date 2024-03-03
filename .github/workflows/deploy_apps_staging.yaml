@@ -1,0 +1,16 @@
+name: 📦🚀 Build & deploy DEV release
+
+permissions: write-all
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  deployOrTagDev:
+    name: 🤖📦🚀 Deploy or Tag Dev
+    uses: ./.github/workflows/_deploy_apps_env.yaml
+    secrets: inherit
+    with:
+      environment-name: "staging"

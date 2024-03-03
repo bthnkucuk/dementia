@@ -1,0 +1,13 @@
+name: 📦🚀 Build & deploy Prod release
+
+permissions: write-all
+
+on: workflow_dispatch
+
+jobs:
+  deployOrTagProd:
+    name: 🤖📦🚀 Deploy or Tag Prod
+    uses: ./.github/workflows/_deploy_apps_env.yaml
+    secrets: inherit
+    with:
+      environment-name: "production"

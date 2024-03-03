@@ -1,0 +1,128 @@
+name: Deploy or Tag Env Apps
+
+permissions: write-all
+
+on:
+  workflow_call:
+    inputs:
+      environment-name:
+        required: true
+        type: string
+
+jobs:
+  gitRelease:
+    environment: ${{ inputs.environment-name }}
+    name: Create git release for ${{ inputs.environment-name }} app
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      new_pubspec_version: "${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+      is_cd: "${{ steps.get_new_pubspec_version.outputs.is_cd }}"
+
+    steps:
+      # Get tag, Set tag, Update pubspec
+      - name: ⬇️ Checkout repository with tags
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.CHECKOUT_PAT }}
+          fetch-depth: 0
+
+      - name: 🏷️🧪 Get previous tag from GitHub tags
+        id: get_latest_dev_release
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          prefix: "release/"
+          fallback: 1.0.0
+
+      - name: 📝 Calculate next version
+        id: get_new_pubspec_version
+        run: |
+          last_dev_release=$(echo "${{ steps.get_latest_dev_release.outputs.tag }}" | sed -E "s/release\/(.*)/\1/")
+          next_pubspec_version=$(./scripts/semver.sh "$last_dev_release")
+          sed -Ei "s/^version: (.*)/version: $next_pubspec_version/" app/pubspec.yaml
+          echo "next_pubspec_version=$next_pubspec_version" >> $GITHUB_OUTPUT
+          isCd=$(./scripts/checkcd.sh "$last_dev_release" "$next_pubspec_version")
+          echo $isCd
+          echo "is_cd=$isCd" >> $GITHUB_OUTPUT
+          echo $next_pubspec_version
+
+      - name: 🏷️✍️ Create new ${{ inputs.environment-name }} release tag
+        uses: rickstaa/action-create-tag@v1
+        with:
+          tag: "release/${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+          message: "Release ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }} for ${{ inputs.environment-name }} environment."
+
+      # # Send Discord notification
+      # - name: 💬 Pick a random success catchphrase
+      #   if: success()
+      #   id: success_catchphrase
+      #   run: |
+      #     sentences=('🤩 AMAZING !' 'Woop woop 🎉' 'Oh wow 😮' '😎 Yeahhhh !' '📣 Amazing announcement !' '📢 Your attention please...' '👏 Great work !' '🍾 Champagne !' '🙌 High five !' '🥳 Time to celebrate !')
+      #     arrayLength=${#sentences[@]}
+      #     randomNumber=$(($RANDOM%$arrayLength))
+      #     pickedSentence=${sentences[$randomNumber]}
+      #     echo "picked_sentence=$pickedSentence" >> $GITHUB_OUTPUT
+      # - name: 🔔✅ Send success notif to Discord
+      #   if: success()
+      #   uses: sarisia/actions-status-discord@v1
+      #   with:
+      #     webhook: ${{ secrets.DISCORD_DEPLOYMENT_WEBHOOK_URL }}
+      #     avatar_url: ${{ vars.DISCORD_DEPLOYMENT_WEBHOOK_AVATAR_SUCCESS }}
+      #     username: "Tag Notifier"
+      #     content: "${{ steps.success_catchphrase.outputs.picked_sentence }}"
+      #     title: "🤖 Tag created succesfully!"
+      #     description: |
+      #       Tag created for the `${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}:${{ inputs.environment-name }}` version.
+      #       Tag Url: ${{ github.server_url }}/${{ github.repository }}/releases/tag/release/${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}
+      #     nofail: true
+      #     nodetail: true
+      # - name: 🔔❌ Send failure notif to Discord
+      #   if: failure()
+      #   uses: sarisia/actions-status-discord@v1
+      #   with:
+      #     webhook: ${{ secrets.DISCORD_DEPLOYMENT_WEBHOOK_URL }}
+      #     avatar_url: ${{ vars.DISCORD_DEPLOYMENT_WEBHOOK_AVATAR_FAILURE }}
+      #     username: "Tag Notifier"
+      #     content: "Oh no 😢"
+      #     title: "🤖 Tag creation has failed..."
+      #     description: |
+      #       Tag failured for the `${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}:${{ inputs.environment-name }}` version.
+      #       Tag creation failed on the version ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}
+      #     nofail: true
+      #     nodetail: true
+
+      # Update CHANGELOG.md and push to repository
+      - name: CHANGELOG.md update
+        if: success()
+        run: |
+          $(./scripts/update_changelog.sh "${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}")
+
+      - name: 🔀 Push bump commit with changelog to repository
+        if: success()
+        uses: stefanzweifel/git-auto-commit-action@v4.16.0
+        with:
+          commit_message: "chore(*): AUTOMATIC COMMIT: CHANGELOG.md updated [skip ci]"
+          push_options: --force
+
+  # deployAndroid:
+  #   name: 🤖📦🚀 Build & deploy Android ${{ inputs.environment-name }} release
+  #   needs: gitRelease
+  #   if: ${{ (needs.gitRelease.outputs.is_cd == 'true') || (inputs.environment-name == 'production') }}
+  #   uses: ./.github/workflows/_deploy_android.yaml
+  #   secrets: inherit
+  #   with:
+  #     environment-name: ${{ inputs.environment-name }}
+  #     # TODO: if app is in production, set release-status to "completed" else "draft"
+  #     release-status: "completed"
+  #     new-pubspec-version: ${{ needs.gitRelease.outputs.new_pubspec_version }}
+
+  # deployIos:
+  #   name: 🍏📦🚀 Build & deploy iOS ${{ inputs.environment-name }} release
+  #   needs: gitRelease
+  #   if: ${{ (needs.gitRelease.outputs.is_cd == 'true') || (inputs.environment-name == 'production') }}
+  #   uses: ./.github/workflows/_deploy_ios.yaml
+  #   secrets: inherit
+  #   with:
+  #     environment-name: ${{ inputs.environment-name }}
+  #     new-pubspec-version: ${{ needs.gitRelease.outputs.new_pubspec_version }}
