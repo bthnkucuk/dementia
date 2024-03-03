@@ -146,7 +146,7 @@ class AnimeDetailsScreen extends HookWidget {
                                         ),
                                         const SizedBox(height: 10),
                                         SizedBox(
-                                          height: 220,
+                                          height: 200,
                                           child: state.when(
                                             initial: () =>
                                                 const ShimmerLoadingHorizontalListWidget(
@@ -176,7 +176,7 @@ class AnimeDetailsScreen extends HookWidget {
 
                                                   return CharacterWidget(
                                                       width: 120,
-                                                      height: 160,
+                                                      imageHeight: 160,
                                                       character: character);
                                                 },
                                               );

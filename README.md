@@ -1,17 +1,104 @@
 # dementia
 
-A new Flutter project.
+Flutter anime app with jikan api. User can see top animes, filter animes, see anime details, see characters of anime, see reviews of anime, open trailer of anime, and see mal page of anime.
 
-## Getting Started
+## Notes and Explanation
 
-This project is a starting point for a Flutter application.
+- Application uses bloc and hooks for state management. Bloc is used for global state management and hooks is used for local state management.
+- go_router is used for routing. go_router_builder is used for building routes.
+- https://api.jikan.moe/ api has a limit of 60 requests per minute. -https://api.jikan.moe/v4/anime/5114/characters endpoint is used for getting characters of anime.
+- https://api.jikan.moe/v4/anime/5114/reviews endpoint is used for getting reviews of anime.
+- https://api.jikan.moe/v4/top/anime endpoint is used for getting top animes.
+- Animes are coming with lazy load. So when user scrolls to bottom, it gets next page of animes.
+- Application has filter for animes. User can filter animes by type, genre, score, status, and season. ["tv" "movie" "ova" "special" "ona" "music" "cm" "pv" "tv_special"]
+- When app starts, app gets top animes from jikan api and shows it on home page.
+- When user clicks an anime, it navigates to anime details page. And shows details of anime.
+- When user clicks a characters, it navigates characters page and shows characters of anime.
+- When user clicks reviews, it navigates reviews page and shows reviews of anime.
+- Lotte package is used for animations.
+- When user clicks youtube icon, it navigates to youtube and shows trailer of anime.
+- When user clicks mal icon, it navigates to mal and shows mal page of anime.
 
-A few resources to get you started if this is your first Flutter project:
+- <br />
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Flavors
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# dementia
+<img src="screenshots/flavors.png">
+
+Dementia uses flavors for different environments. (Development, Staging, Production)
+
+**Development:** Development environment for testing and debugging.
+
+**Staging:** Staging environment for testing before production.
+
+**Production:** Production environment for end users.
+
+## Video Demo
+
+https://drive.google.com/file/d/1pGzD25G78XWj44mz6pC170_5oto1foIQ/view?usp=sharing
+[![Watch the video](./screenshots/drive_pre.png)](https://drive.google.com/file/d/1pGzD25G78XWj44mz6pC170_5oto1foIQ/view?usp=sharing)
+
+## Demo
+
+<img src="screenshots/1.gif" width=200>
+<img src="screenshots/2.gif" width=200>
+<img src="screenshots/3.gif" width=200>
+
+<img src="screenshots/4.gif" width=200>
+<img src="screenshots/5.gif" width=200>
+<img src="screenshots/6.gif" width=200>
+
+<img src="screenshots/7.gif" width=200>
+<img src="screenshots/8.gif" width=200>
+
+## Features
+
+- Top animes
+- Filter animes
+- Pagination for animes
+- Lazy load for animes
+- Anime details
+- Characters of anime
+- Reviews of anime
+- Trailer of anime
+- Mal page of anime
+
+## Used Packages and Versions
+
+**Packages:** get_it, flutter_bloc, bloc, flutter_hooks, http, internet_connection_checker_plus, freezed_annotation, json_annotation, cached_network_image, lottie, flutter_svg, go_router, talker_flutter, intl,
+url_launcher, shimmer, collection, equatable, fpdart
+
+**Flutter Version:** 3.7.12
+
+<br />
+
+## Tests
+
+- Router tests
+- Bloc tests
+- Widget tests
+- Unit tests
+- Some golden tests
+- Some integration tests
+
+<br />
+
+## Used API Calls
+
+#### Get top animes
+
+```http
+  GET https://api.jikan.moe/v4/top/anime
+```
+
+#### Get characters of anime
+
+```http
+  GET https://api.jikan.moe/v4/anime/5114/characters
+```
+
+#### Get reviews of anime
+
+```http
+  GET https://api.jikan.moe/v4/anime/5114/reviews
+```

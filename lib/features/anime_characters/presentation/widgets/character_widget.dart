@@ -1,3 +1,4 @@
+import 'package:dementia/config/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/app_cached_network_image.dart';
@@ -7,11 +8,15 @@ import '../../data/models/anime_characters/anime_characters_model.dart';
 class CharacterWidget extends StatelessWidget {
   final double? width;
   final double? height;
+  final double? imageHeight;
+  final double? imageWidth;
   const CharacterWidget({
     super.key,
     required this.character,
     this.width,
     this.height,
+    this.imageHeight,
+    this.imageWidth,
   });
 
   final Character character;
@@ -29,6 +34,8 @@ class CharacterWidget extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: AppCachedNetworkImage(
+              height: imageHeight,
+              width: imageWidth,
               imageUrl: character.images.jpg.imageUrl,
             ),
           ),
@@ -37,6 +44,7 @@ class CharacterWidget extends StatelessWidget {
             character.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
+            style: s12W400,
           ),
         ],
       ),

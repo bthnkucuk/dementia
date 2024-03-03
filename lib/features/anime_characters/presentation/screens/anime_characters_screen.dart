@@ -30,7 +30,10 @@ class AnimeCharactersScreen extends StatelessWidget {
               itemCount: characters.data.length,
               itemBuilder: (BuildContext context, int index) {
                 final character = characters.data[index].character;
-                return CharacterWidget(character: character);
+                return CharacterWidget(
+                  character: character,
+                  imageHeight: 140,
+                );
               },
             ),
             //NOT: No need loading and error state because if there is no review, [AnimeCharactersScreen] will not be called

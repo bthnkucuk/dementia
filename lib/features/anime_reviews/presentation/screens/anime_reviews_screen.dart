@@ -28,7 +28,7 @@ class AnimeReviewsScreen extends StatelessWidget {
                     avatarUrl: review.user.images.values.first.imageUrl,
                     title: review.user.username,
                     textTitle: review.tags.first,
-                    textMaxLines: null,
+                    textMaxLines: 10,
                     text: review.review ?? '');
               },
             ),

@@ -24,6 +24,7 @@ class AnimeCharactersBloc
   ) async {
     emit(const AnimeCharactersStateLoading());
     final result = await getAnimeCharactersWithAnimeId(event.animeId);
+
     result.fold(
       (l) => emit(AnimeCharactersStateError(failureToMessage(l))),
       (r) => emit(Loaded(r)),
