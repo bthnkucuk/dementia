@@ -44,6 +44,11 @@ dependencies:
 
   # logger
   talker_flutter: ^3.6.0
+  talker_bloc_logger: ^2.4.0
+
+  # firebase
+  firebase_core: ^2.24.2
+  firebase_crashlytics: ^3.4.9
 
   # others
   intl: ^0.18.1

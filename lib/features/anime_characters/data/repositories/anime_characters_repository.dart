@@ -1,4 +1,4 @@
-import 'package:dementia/core/exceptions/exceptions.dart';
+import 'package:dementia/config/log/talker.dart';
 import 'package:dementia/core/helpers/network_info.dart';
 
 import 'package:dementia/core/failures/failures.dart';
@@ -24,7 +24,9 @@ class AnimeCharactersRepository implements IAnimeCharactersRepository {
       try {
         final model = await networkDataSource.getAnimeCharacters(animeId);
         return Right(model);
-      } on ServerException {
+      } catch (e, s) {
+        talker.handle(e, s);
+
         return Left(ServerFailure());
       }
     } else {

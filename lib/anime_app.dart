@@ -1,7 +1,6 @@
 import 'package:dementia/core/flavor/flavor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'config/router/router.dart';
 import 'config/theme/app_theme.dart';
 import 'features/anime_characters/presentation/bloc/anime_characters_bloc.dart';

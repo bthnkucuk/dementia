@@ -34,6 +34,8 @@ Dementia uses flavors for different environments. (Development, Staging, Product
 
 **Production:** Production environment for production.
 
+<br />
+
 ## CI-CD
 
 <img src="screenshots/tags.png" width=300>
@@ -41,6 +43,8 @@ Dementia uses flavors for different environments. (Development, Staging, Product
 <img src="screenshots/deployments.png" width=300>
 
 - Dementia uses github actions for CI-CD. When a push is made to main branch, it generate new version and tag. And uses this tag for versioning. Then it creates apk and ipa push it to stores. ( Deploy part is closed for this project )
+
+  <br />
 
 ## Video Demo
 
@@ -93,12 +97,21 @@ https://drive.google.com/file/d/1pGzD25G78XWj44mz6pC170_5oto1foIQ/view?usp=shari
 - Trailer of anime
 - Mal page of anime
 
+<br />
+
 ## Used Packages and Versions
 
-**Packages:** get_it, flutter_bloc, bloc, flutter_hooks, http, internet_connection_checker_plus, freezed_annotation, json_annotation, cached_network_image, lottie, flutter_svg, go_router, talker_flutter, intl,
+**Packages:** firebase_core, firebase_crashlytics get_it, flutter_bloc, bloc, flutter_hooks, http, internet_connection_checker_plus, freezed_annotation, json_annotation, cached_network_image, lottie, flutter_svg, go_router, talker_flutter, intl,
 url_launcher, shimmer, collection, equatable, fpdart
 
 **Flutter Version:** 3.7.12
+
+<br />
+
+## Logs and Crashs
+
+- Application talker_flutter and talker_bloc_logger.
+- Application uses crashlytics for crashs. There is a Observer for crashlytics. When an error occurs, talker logs it and sends it to crashlytics.
 
 <br />
 
@@ -135,7 +148,7 @@ url_launcher, shimmer, collection, equatable, fpdart
 
 <br />
 
-## Used API Calls
+## Run
 
 Application uses fvm for flutter version management. You can install fvm with this command.
 
@@ -143,7 +156,7 @@ Application uses fvm for flutter version management. You can install fvm with th
   dart pub global activate fvm
 ```
 
-Then you can install flutter version with this command.
+Then you can use flutter version with this command.
 
 ```bash
   fvm use 3.7.12

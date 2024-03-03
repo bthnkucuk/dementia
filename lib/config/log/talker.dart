@@ -1,5 +1,7 @@
 import 'package:talker_flutter/talker_flutter.dart';
 
+import 'crashlitics_observer.dart';
+
 final talker = TalkerFlutter.init(
   settings: TalkerSettings(
     /// You can enable/disable all talker processes with this field
@@ -16,25 +18,3 @@ final talker = TalkerFlutter.init(
   ),
   observer: const CrashlyticsTalkerObserver(),
 );
-
-class CrashlyticsTalkerObserver extends TalkerObserver {
-  const CrashlyticsTalkerObserver();
-
-  @override
-  void onError(TalkerError err) {
-    // FirebaseCrashlytics.instance.recordError(
-    //   err.error,
-    //   err.stackTrace,
-    //   reason: err.message,
-    // );
-  }
-
-  @override
-  void onException(TalkerException err) {
-    // FirebaseCrashlytics.instance.recordError(
-    //   err.exception,
-    //   err.stackTrace,
-    //   reason: err.message,
-    // );
-  }
-}

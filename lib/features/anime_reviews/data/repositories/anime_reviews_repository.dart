@@ -1,8 +1,8 @@
-import 'package:dementia/core/exceptions/exceptions.dart';
 import 'package:dementia/core/helpers/network_info.dart';
 
 import 'package:dementia/core/failures/failures.dart';
 import 'package:fpdart/fpdart.dart';
+import '../../../../config/log/talker.dart';
 import '../../domain/rerpositories/anime_reviews_repository.dart';
 import '../data_sources/anime_reviews_network_data_source.dart.dart';
 import '../models/anime_reviews/anime_reviews_model.dart';
@@ -24,7 +24,9 @@ class AnimeReviewsRepository implements IAnimeReviewsRepository {
       try {
         final model = await networkDataSource.getAnimeReviews(animeId);
         return Right(model);
-      } on ServerException {
+      } catch (e, s) {
+        talker.handle(e, s);
+
         return Left(ServerFailure());
       }
     } else {

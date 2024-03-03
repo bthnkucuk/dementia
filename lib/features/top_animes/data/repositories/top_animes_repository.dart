@@ -1,7 +1,7 @@
-import 'package:dementia/core/exceptions/exceptions.dart';
 import 'package:dementia/core/helpers/network_info.dart';
 import 'package:dementia/core/failures/failures.dart';
 import 'package:fpdart/fpdart.dart';
+import '../../../../config/log/talker.dart';
 import '../../domain/rerpositories/top_animes_repository.dart';
 import '../data_sources/top_animes_network_data_source.dart.dart';
 import '../models/top_animes/top_animes_model.dart';
@@ -25,7 +25,9 @@ class TopAnimesRepository implements ITopAnimeSRepository {
         final model = await networkDataSource
             .getTopAnimesWithPageNumber(pageNumber, type: type);
         return Right(model);
-      } on ServerException {
+      } catch (e, s) {
+        talker.handle(e, s);
+
         return Left(ServerFailure());
       }
     } else {
