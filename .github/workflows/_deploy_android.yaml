@@ -53,7 +53,7 @@ jobs:
 
       - name: 📝🔐 Create key.properties file
         env:
-          KEYSTORE_PROPERTIES_PATH: ${{ github.workspace }}/app/android/key.properties
+          KEYSTORE_PROPERTIES_PATH: ${{ github.workspace }}/android/key.properties
         run: |
           echo '${{ inputs.environment-name }}StoreFile=${{ github.workspace }}/upload-keystore.jks' > $KEYSTORE_PROPERTIES_PATH
           echo '${{ inputs.environment-name }}KeyAlias=${{ secrets.KEYSTORE_KEY_ALIAS }}' >> $KEYSTORE_PROPERTIES_PATH
@@ -62,7 +62,7 @@ jobs:
 
       - name: 📝 Edit pubspec version
         run: |
-          sed -Ei "s/^version: (.*)/version: ${{ inputs.new-pubspec-version }}/" app/pubspec.yaml
+          sed -Ei "s/^version: (.*)/version: ${{ inputs.new-pubspec-version }}/"pubspec.yaml
 
       - name: ⚙️ Setup Melos
         uses: bluefireteam/melos-action@v2
@@ -92,40 +92,40 @@ jobs:
           serviceAccountJsonPlainText: "${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_KEY_JSON }}"
           # changesNotSentForReview: true
 
-      - name: 💬 Pick a random success catchphrase
-        if: success()
-        id: success_catchphrase
-        run: |
-          sentences=('🤩 AMAZING !' 'Woop woop 🎉' 'Oh wow 😮' '😎 Yeahhhh !' '📣 Amazing announcement !' '📢 Your attention please...' '👏 Great work !' '🍾 Champagne !' '🙌 High five !' '🥳 Time to celebrate !')
-          arrayLength=${#sentences[@]}
-          randomNumber=$(($RANDOM%$arrayLength))
-          pickedSentence=${sentences[$randomNumber]}
-          echo "picked_sentence=$pickedSentence" >> $GITHUB_OUTPUT
-      - name: 🔔✅ Send success notif to Discord
-        if: success()
-        uses: sarisia/actions-status-discord@v1
-        with:
-          webhook: ${{ secrets.DISCORD_DEPLOYMENT_WEBHOOK_URL }}
-          avatar_url: ${{ vars.DISCORD_DEPLOYMENT_WEBHOOK_AVATAR_SUCCESS }}
-          username: "Android Notifier"
-          content: "${{ vars.DISCORD_SUCCESS_USER_TAG }} ${{ steps.success_catchphrase.outputs.picked_sentence }}"
-          title: "🤖 New version is available on Android!"
-          description: |
-            Version `${{ inputs.new-pubspec-version }}:${{ inputs.environment-name }}`
-          nofail: true
-          nodetail: true
-      - name: 🔔❌ Send failure notif to Discord
-        if: failure()
-        uses: sarisia/actions-status-discord@v1
-        with:
-          webhook: ${{ secrets.DISCORD_DEPLOYMENT_WEBHOOK_URL }}
-          avatar_url: ${{ vars.DISCORD_DEPLOYMENT_WEBHOOK_AVATAR_FAILURE }}
-          username: "Android Notifier"
-          content: "${{ vars.DISCORD_FAILURE_USER_TAG }} Oh no 😢"
-          title: "🤖 Release of ${{ inputs.environment-name }} has failed..."
-          description: |
-            Failed job: 🍏📦🚀 Build & deploy Android ${{ inputs.environment-name }} release
-            Failed to release version `${{ inputs.new-pubspec-version }}` of ${{ inputs.environment-name }}
-          nofail: true
-          nodetail: true
+      # - name: 💬 Pick a random success catchphrase
+      #   if: success()
+      #   id: success_catchphrase
+      #   run: |
+      #     sentences=('🤩 AMAZING !' 'Woop woop 🎉' 'Oh wow 😮' '😎 Yeahhhh !' '📣 Amazing announcement !' '📢 Your attention please...' '👏 Great work !' '🍾 Champagne !' '🙌 High five !' '🥳 Time to celebrate !')
+      #     arrayLength=${#sentences[@]}
+      #     randomNumber=$(($RANDOM%$arrayLength))
+      #     pickedSentence=${sentences[$randomNumber]}
+      #     echo "picked_sentence=$pickedSentence" >> $GITHUB_OUTPUT
+      # - name: 🔔✅ Send success notif to Discord
+      #   if: success()
+      #   uses: sarisia/actions-status-discord@v1
+      #   with:
+      #     webhook: ${{ secrets.DISCORD_DEPLOYMENT_WEBHOOK_URL }}
+      #     avatar_url: ${{ vars.DISCORD_DEPLOYMENT_WEBHOOK_AVATAR_SUCCESS }}
+      #     username: "Android Notifier"
+      #     content: "${{ vars.DISCORD_SUCCESS_USER_TAG }} ${{ steps.success_catchphrase.outputs.picked_sentence }}"
+      #     title: "🤖 New version is available on Android!"
+      #     description: |
+      #       Version `${{ inputs.new-pubspec-version }}:${{ inputs.environment-name }}`
+      #     nofail: true
+      #     nodetail: true
+      # - name: 🔔❌ Send failure notif to Discord
+      #   if: failure()
+      #   uses: sarisia/actions-status-discord@v1
+      #   with:
+      #     webhook: ${{ secrets.DISCORD_DEPLOYMENT_WEBHOOK_URL }}
+      #     avatar_url: ${{ vars.DISCORD_DEPLOYMENT_WEBHOOK_AVATAR_FAILURE }}
+      #     username: "Android Notifier"
+      #     content: "${{ vars.DISCORD_FAILURE_USER_TAG }} Oh no 😢"
+      #     title: "🤖 Release of ${{ inputs.environment-name }} has failed..."
+      #     description: |
+      #       Failed job: 🍏📦🚀 Build & deploy Android ${{ inputs.environment-name }} release
+      #       Failed to release version `${{ inputs.new-pubspec-version }}` of ${{ inputs.environment-name }}
+      #     nofail: true
+      #     nodetail: true
 ###

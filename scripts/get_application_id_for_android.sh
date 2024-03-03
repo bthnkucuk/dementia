@@ -4,7 +4,7 @@
 flavor=$1
 
 # build.gradle path
-gradle_file="app/android/app/build.gradle"
+gradle_file="android/app/build.gradle"
 
 # flavor kontrolü
 if [ -z "$flavor" ]; then
