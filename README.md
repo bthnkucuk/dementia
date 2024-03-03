@@ -31,7 +31,13 @@ Dementia uses flavors for different environments. (Development, Staging, Product
 
 **Staging:** Staging environment for testing before production.
 
-**Production:** Production environment for end users.
+## CI-CD
+
+<img src="screenshots/tags.png" width=300>
+<img src="screenshots/tags2.png" width=300>
+<img src="screenshots/deployments.png" width=300>
+
+- Dementia uses github actions for CI-CD. When a push is made to main branch, it generate new version and tag. And uses this tag for versioning. Then it creates apk and ipa push it to stores. ( Deploy part is closed for this project )
 
 ## Video Demo
 
@@ -40,15 +46,36 @@ https://drive.google.com/file/d/1pGzD25G78XWj44mz6pC170_5oto1foIQ/view?usp=shari
 
 ## Demo
 
+#### Splash Screen
+
 <img src="screenshots/1.gif" width=200>
+
+#### Lazy Load and Pagination
+
 <img src="screenshots/2.gif" width=200>
+
+#### Filter Animes
+
 <img src="screenshots/3.gif" width=200>
 
+#### Anime Details
+
 <img src="screenshots/4.gif" width=200>
+
+#### Shimmer Effect on Loading
+
 <img src="screenshots/5.gif" width=200>
+
+#### Characters of Anime
+
 <img src="screenshots/6.gif" width=200>
 
+#### Reviews of Anime
+
 <img src="screenshots/7.gif" width=200>
+
+#### Trailer of Anime and Mal Page of Anime
+
 <img src="screenshots/8.gif" width=200>
 
 ## Features
