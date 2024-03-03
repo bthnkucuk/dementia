@@ -20,7 +20,6 @@ class MethodChannelHandler {
   }
 
   Future _handleMethod(MethodCall call) async {
-    print(call);
     switch (MethodChannelMethods.fromString(call.method)) {
       //top animes
       case MethodChannelMethods.topAnimesNextPage:

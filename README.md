@@ -7,7 +7,7 @@ Flutter anime app with jikan api. User can see top animes, filter animes, see an
 - Application uses bloc and hooks for state management. Bloc is used for global state management and hooks is used for local state management.
 - go_router is used for routing. go_router_builder is used for building routes.
 - https://api.jikan.moe/ api has a limit of 60 requests per minute.
-- -https://api.jikan.moe/v4/anime/5114/characters endpoint is used for getting characters of anime.
+- https://api.jikan.moe/v4/anime/5114/characters endpoint is used for getting characters of anime.
 - https://api.jikan.moe/v4/anime/5114/reviews endpoint is used for getting reviews of anime.
 - https://api.jikan.moe/v4/top/anime endpoint is used for getting top animes.
 - Animes are coming with lazy load. So when user scrolls to bottom, it gets next page of animes.
@@ -31,6 +31,8 @@ Dementia uses flavors for different environments. (Development, Staging, Product
 **Development:** Development environment for testing and debugging.
 
 **Staging:** Staging environment for testing before production.
+
+**Production:** Production environment for production.
 
 ## CI-CD
 
@@ -129,4 +131,45 @@ url_launcher, shimmer, collection, equatable, fpdart
 
 ```http
   GET https://api.jikan.moe/v4/anime/5114/reviews
+```
+
+<br />
+
+## Used API Calls
+
+Application uses fvm for flutter version management. You can install fvm with this command.
+
+```bash
+  dart pub global activate fvm
+```
+
+Then you can install flutter version with this command.
+
+```bash
+  fvm use 3.7.12
+```
+
+Then you must generate files with this command.
+
+```bash
+  flutter packages pub run build_runner build
+
+  # for build
+  dart run build_runner --delete-conflicting-outputs
+
+  # for watch
+  dart run build_runner watch --delete-conflicting-outputs
+```
+
+Then you can run the application with this command.
+
+```bash
+# development flavor
+  flutter run -t lib/main_development.dart --flavor development
+
+# staging flavor
+  flutter run -t lib/main_staging.dart --flavor staging
+
+# production flavor
+  flutter run -t lib/main_production.dart --flavor production
 ```
