@@ -6,7 +6,8 @@ Flutter anime app with jikan api. User can see top animes, filter animes, see an
 
 - Application uses bloc and hooks for state management. Bloc is used for global state management and hooks is used for local state management.
 - go_router is used for routing. go_router_builder is used for building routes.
-- https://api.jikan.moe/ api has a limit of 60 requests per minute. -https://api.jikan.moe/v4/anime/5114/characters endpoint is used for getting characters of anime.
+- https://api.jikan.moe/ api has a limit of 60 requests per minute.
+- -https://api.jikan.moe/v4/anime/5114/characters endpoint is used for getting characters of anime.
 - https://api.jikan.moe/v4/anime/5114/reviews endpoint is used for getting reviews of anime.
 - https://api.jikan.moe/v4/top/anime endpoint is used for getting top animes.
 - Animes are coming with lazy load. So when user scrolls to bottom, it gets next page of animes.
@@ -19,7 +20,7 @@ Flutter anime app with jikan api. User can see top animes, filter animes, see an
 - When user clicks youtube icon, it navigates to youtube and shows trailer of anime.
 - When user clicks mal icon, it navigates to mal and shows mal page of anime.
 
-- <br />
+ <br />
 
 ## Flavors
 
