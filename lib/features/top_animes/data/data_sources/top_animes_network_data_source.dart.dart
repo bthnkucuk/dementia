@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 
 import '../models/top_animes/top_animes_model.dart';
 
+/// [TopAnimesAnimeNetworkDataSource] is a class that provides top animes data from the network.
 class TopAnimesAnimeNetworkDataSource {
   final http.Client client;
 

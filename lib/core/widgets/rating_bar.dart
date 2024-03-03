@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../config/theme/app_colors.dart';
 
+/// [RatingBar] is a widget that displays a rating bar.
 class RatingBar extends StatelessWidget {
   final double score;
 

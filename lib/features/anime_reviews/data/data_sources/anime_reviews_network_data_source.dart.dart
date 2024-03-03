@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 import '../models/anime_reviews/anime_reviews_model.dart';
 
+/// [AnimeReviewsNetworkDataSource] is a class that provides anime reviews data from the network.
 class AnimeReviewsNetworkDataSource {
   final http.Client client;
 

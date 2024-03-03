@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 
 import '../models/anime_characters/anime_characters_model.dart';
 
+/// [AnimeCharactersNetworkDataSource] is a class that provides anime characters data from the network.
 class AnimeCharactersNetworkDataSource {
   final http.Client client;
 

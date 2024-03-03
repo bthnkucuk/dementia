@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../../config/router/routes.dart';
+import '../../../../../config/router/anime_route.dart';
 import '../../../../../core/method_channel/method_channel_handler.dart';
 import '../../../../../core/widgets/bordered_card.dart';
 import '../../../../../core/widgets/top_to_reload.dart';
@@ -15,9 +15,10 @@ import '../../../../../core/widgets/shimmer_loading_horizontal_list_widget.dart'
 import '../../../../anime_characters/presentation/bloc/anime_characters_bloc.dart';
 import '../../../../anime_characters/presentation/widgets/character_widget.dart';
 import '../../../../anime_reviews/presentation/bloc/anime_reviews_bloc.dart';
-import '../../../data/models/top_animes/top_animes_model.dart';
-import '../../bloc/top_animes_bloc.dart';
-import '../../widgets/details_app_bar.dart';
+import '../../../../top_animes/data/models/top_animes/top_animes_model.dart';
+import '../../../../top_animes/presentation/bloc/top_animes_bloc.dart';
+import '../../../../top_animes/presentation/widgets/details_app_bar.dart';
+
 part 'anime_detail_part.dart';
 
 class AnimeDetailsScreen extends HookWidget {
@@ -55,6 +56,7 @@ class AnimeDetailsScreen extends HookWidget {
           builder: (context, state) {
             return CustomScrollView(
               slivers: [
+                //App Bar
                 DetailsAppBar(malId: malId),
                 SliverToBoxAdapter(
                   child: SingleChildScrollView(
@@ -146,7 +148,6 @@ class AnimeDetailsScreen extends HookWidget {
                                         SizedBox(
                                           height: 220,
                                           child: state.when(
-                                            //TODO
                                             initial: () =>
                                                 const ShimmerLoadingHorizontalListWidget(
                                               elementWidth: 120,
@@ -180,7 +181,6 @@ class AnimeDetailsScreen extends HookWidget {
                                                 },
                                               );
                                             },
-                                            //TODO
                                             error: (message) => Center(
                                                 child: TopToReload.bottom(
                                                     onTap: () =>
@@ -277,6 +277,7 @@ class AnimeDetailsScreen extends HookWidget {
                                                   return SizedBox(
                                                     width: 200,
                                                     child: BorderedCard(
+                                                        textMaxLines: 7,
                                                         avatarUrl: review
                                                             .user
                                                             .images

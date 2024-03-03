@@ -7,6 +7,7 @@ import '../../domain/rerpositories/anime_reviews_repository.dart';
 import '../data_sources/anime_reviews_network_data_source.dart.dart';
 import '../models/anime_reviews/anime_reviews_model.dart';
 
+/// [AnimeReviewsRepository] is a class that provides anime reviews data from the [AnimeReviewsNetworkDataSource].
 class AnimeReviewsRepository implements IAnimeReviewsRepository {
   final AnimeReviewsNetworkDataSource networkDataSource;
   final NetworkInfo networkInfo;

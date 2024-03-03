@@ -7,6 +7,7 @@ import '../../domain/rerpositories/anime_characters_repository.dart';
 import '../data_sources/anime_characters_network_data_source.dart.dart';
 import '../models/anime_characters/anime_characters_model.dart';
 
+/// [AnimeCharactersRepository] is a class that provides anime characters data from the [AnimeCharactersNetworkDataSource].
 class AnimeCharactersRepository implements IAnimeCharactersRepository {
   final AnimeCharactersNetworkDataSource networkDataSource;
   final NetworkInfo networkInfo;

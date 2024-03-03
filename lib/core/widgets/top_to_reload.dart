@@ -8,6 +8,7 @@ import '../../../../core/constants/lottie_constants.dart';
 
 enum _TopToReloadType { bottom, center }
 
+/// [TopToReload] is a widget that displays a top to reload.
 class TopToReload extends StatelessWidget {
   final VoidCallback onTap;
   final _TopToReloadType _type;

@@ -16,6 +16,7 @@ class AnimeReviewsBloc extends Bloc<AnimeReviewsEvent, AnimeReviewsState> {
     on<AnimeReviewsEventFetchAnimeReviews>(fetchAnimeReviews);
   }
 
+  /// [fetchAnimeReviews] is a event listener that fetches anime reviews data from the [GetAnimeReviewsWithAnimeId] and emits a state.
   Future<void> fetchAnimeReviews(
     AnimeReviewsEventFetchAnimeReviews event,
     Emitter<AnimeReviewsState> emit,

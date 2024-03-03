@@ -6,6 +6,7 @@ import '../constants/lottie_constants.dart';
 
 enum _AppCircularProgressIndicatorType { dots, line }
 
+/// [AppCircularProgressIndicator] is a widget that displays a circular progress indicator.
 class AppCircularProgressIndicator extends StatelessWidget {
   final double dimension;
 

@@ -2,6 +2,7 @@ import 'package:dementia/config/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
+/// [ShimmerLoadingHorizontalListWidget] is a widget that displays a shimmer loading horizontal list.
 class ShimmerLoadingHorizontalListWidget extends StatelessWidget {
   final double elementWidth;
   final double elementHeight;

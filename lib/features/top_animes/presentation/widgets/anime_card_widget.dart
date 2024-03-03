@@ -9,7 +9,7 @@ import 'package:dementia/core/widgets/rating_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../config/router/routes.dart';
+import '../../../../config/router/anime_route.dart';
 import '../../data/models/top_animes/top_animes_model.dart';
 
 class AnimeCardWidget extends StatelessWidget {

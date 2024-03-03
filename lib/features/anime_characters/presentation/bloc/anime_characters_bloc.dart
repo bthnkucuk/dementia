@@ -17,6 +17,7 @@ class AnimeCharactersBloc
     on<AnimeCharactersEventFetchAnimeCharacters>(fetchAnimeCharacters);
   }
 
+  /// [fetchAnimeCharacters] is a event listener that fetches anime characters data from the [GetAnimeCharactersWithAnimeId] and emits a state.
   Future<void> fetchAnimeCharacters(
     AnimeCharactersEventFetchAnimeCharacters event,
     Emitter<AnimeCharactersState> emit,

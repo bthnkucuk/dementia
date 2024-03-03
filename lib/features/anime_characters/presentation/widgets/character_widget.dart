@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/app_cached_network_image.dart';
 import '../../data/models/anime_characters/anime_characters_model.dart';
 
+/// [CharacterWidget] is a widget that displays a character.
 class CharacterWidget extends StatelessWidget {
   final double? width;
   final double? height;

@@ -9,12 +9,15 @@ import 'features/anime_reviews/presentation/bloc/anime_reviews_bloc.dart';
 import 'features/top_animes/presentation/bloc/top_animes_bloc.dart';
 import 'injection_container.dart' as injection;
 
+FlavorModel? appFlavor;
+
 class AnimeApp extends StatelessWidget {
   final FlavorModel flavor;
   const AnimeApp({super.key, required this.flavor});
 
   @override
   Widget build(BuildContext context) {
+    appFlavor = flavor;
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => injection.sl<TopAnimesBloc>()),

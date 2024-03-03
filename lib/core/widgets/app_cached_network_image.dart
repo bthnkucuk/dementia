@@ -3,6 +3,7 @@ import 'package:dementia/core/widgets/app_circular_progres_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+/// [AppCachedNetworkImage] is a widget that displays an image from the network and caches it.
 class AppCachedNetworkImage extends StatelessWidget {
   final String? imageUrl;
   final double? height;

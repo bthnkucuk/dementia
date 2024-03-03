@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/anime_characters/presentation/screens/anime_characters_screen.dart';
+import '../../features/anime_characters/presentation/screens/anime_detail/anime_detail_screen.dart';
 import '../../features/anime_reviews/presentation/screens/anime_reviews_screen.dart';
-import '../../features/top_animes/presentation/screens/anime_detail/anime_detail_screen.dart';
 import '../../features/top_animes/presentation/screens/anime_home_screen.dart';
 
-part 'routes.g.dart';
+part 'anime_route.g.dart';
 
 @TypedGoRoute<HomeRoute>(
   path: '/home',

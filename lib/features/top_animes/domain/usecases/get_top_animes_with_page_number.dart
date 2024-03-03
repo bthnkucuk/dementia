@@ -5,6 +5,7 @@ import '../../../../core/usecases/usecases.dart';
 import '../../data/models/top_animes/top_animes_model.dart';
 import '../rerpositories/top_animes_repository.dart';
 
+/// [GetTopAnimesWithPageNumber] is a class that provides top animes data from the [TopAnimesRepository].
 class GetTopAnimesWithPageNumber implements IUseCase<TopAnimesModel, int> {
   final ITopAnimeSRepository repository;
 

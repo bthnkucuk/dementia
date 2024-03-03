@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:dementia/config/router/router.dart';
-import 'package:dementia/config/router/routes.dart';
+import 'package:dementia/config/router/anime_route.dart';
 import 'package:dementia/features/anime_characters/data/models/anime_characters/anime_characters_model.dart';
 import 'package:dementia/features/anime_characters/domain/usecases/get_anime_characters_with_anime_id.dart';
 import 'package:dementia/features/anime_characters/presentation/bloc/anime_characters_bloc.dart';

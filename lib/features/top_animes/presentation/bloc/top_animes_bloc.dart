@@ -20,6 +20,7 @@ class TopAnimesBloc extends Bloc<TopAnimesEvent, TopAnimesState> {
     on<TopAnimesEventNextPage>(onNextPage);
   }
 
+  /// [onfilter] is a event listener that fetches top animes data from the [GetTopAnimesWithPageNumber] and emits a state.
   Future<void> onfilter(
     TopAnimesEventFilter event,
     Emitter<TopAnimesState> emit,
@@ -37,6 +38,7 @@ class TopAnimesBloc extends Bloc<TopAnimesEvent, TopAnimesState> {
     );
   }
 
+  /// [onNextPage] is a event listener that fetches the next page of top animes data from the [GetTopAnimesWithPageNumber] and emits a state.
   Future<void> onNextPage(
     TopAnimesEventNextPage event,
     Emitter<TopAnimesState> emit,
