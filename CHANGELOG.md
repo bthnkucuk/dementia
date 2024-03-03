@@ -1,4 +1,11 @@
 ## MINOR FIXES
+- Title: Update README.md
+- Description: 
+- Date: 03.03.2024
+- Version: 1.0.0+9
+- Author: ([bthnkucuk](https://github.com/bthnkucuk/dementia/commit/39d4592))
+
+## MINOR FIXES
 - Title: crashlytics, talker, firebase for all flavors
 - Description: 
 - Date: 03.03.2024
