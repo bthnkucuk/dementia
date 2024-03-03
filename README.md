@@ -19,6 +19,8 @@ Flutter anime app with jikan api. User can see top animes, filter animes, see an
 - Lotte package is used for animations.
 - When user clicks youtube icon, it navigates to youtube and shows trailer of anime.
 - When user clicks mal icon, it navigates to mal and shows mal page of anime.
+- get_it uses for dependency injection.
+- firebase_crashlytics is used for crashs.
 
  <br />
 
