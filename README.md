@@ -122,8 +122,8 @@ url_launcher, shimmer, collection, equatable, fpdart
 
 ## Logs and Crashs
 
-- Application talker_flutter and talker_bloc_logger.
-- Application uses crashlytics for crashs. There is a Observer for crashlytics. When an error occurs, talker logs it and sends it to crashlytics.
+- Application uses talker_flutter and talker_bloc_logger for logging.
+- Application uses crashlytics for crashes. There is a Observer for crashlytics. When an error occurs, talker logs it and sends it to crashlytics.
 
 <br />
 
