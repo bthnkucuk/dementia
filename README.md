@@ -180,10 +180,10 @@ Then you must generate files with this command.
   flutter packages pub run build_runner build
 
   # for build
-  dart run build_runner --delete-conflicting-outputs
+  flutter pub run build_runner build --delete-conflicting-outputs
 
   # for watch
-  dart run build_runner watch --delete-conflicting-outputs
+  flutter pub run build_runner watch --delete-conflicting-outputs
 ```
 
 Then you can run the application with this command.
