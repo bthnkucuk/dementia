@@ -1,4 +1,11 @@
 ## MINOR FIXES
+- Title: Create anime_reviews_screen_test.dart
+- Description: 
+- Date: 04.03.2024
+- Version: 1.0.0+18
+- Author: ([bthnkucuk](https://github.com/bthnkucuk/dementia/commit/6d57e93))
+
+## MINOR FIXES
 - Title: screen widget tests
 - Description: 
 - Date: 04.03.2024
