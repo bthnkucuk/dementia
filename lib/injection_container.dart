@@ -1,3 +1,4 @@
+import 'package:dementia/config/log/talker.dart';
 import 'package:dementia/core/helpers/network_info.dart';
 import 'package:dementia/features/anime_characters/data/data_sources/anime_characters_network_data_source.dart.dart';
 import 'package:dementia/features/anime_characters/data/repositories/anime_characters_repository.dart';
@@ -32,6 +33,7 @@ Future<void> init() async {
   sl.registerLazySingleton<ITopAnimeSRepository>(() => TopAnimesRepository(
         networkDataSource: sl(),
         networkInfo: sl(),
+        talker: talker,
       ));
 
   // Anime Characters
@@ -43,6 +45,7 @@ Future<void> init() async {
       () => AnimeCharactersRepository(
             networkDataSource: sl(),
             networkInfo: sl(),
+            talker: talker,
           ));
 
   // Anime Reviews
@@ -53,5 +56,6 @@ Future<void> init() async {
       () => AnimeReviewsRepository(
             networkDataSource: sl(),
             networkInfo: sl(),
+            talker: talker,
           ));
 }

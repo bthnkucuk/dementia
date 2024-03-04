@@ -10,10 +10,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 import '../../../../dummy_data/anime_caracters/reader.dart';
-@GenerateNiceMocks(
-    [MockSpec<AnimeCharactersNetworkDataSource>(), MockSpec<NetworkInfo>()])
+@GenerateNiceMocks([
+  MockSpec<AnimeCharactersNetworkDataSource>(),
+  MockSpec<NetworkInfo>(),
+])
 import 'anime_characters_repository_test.mocks.dart';
+
+class MockTolker extends Mock implements Talker {}
 
 void main() {
   late AnimeCharactersRepository repository;
@@ -22,7 +27,10 @@ void main() {
 
   late NetworkInfo networkInfo;
 
-  setUp(() {
+  late Talker talker;
+
+  setUp(() async {
+    talker = MockTolker();
     networkDataSource = MockAnimeCharactersNetworkDataSource();
 
     networkInfo = MockNetworkInfo();
@@ -30,6 +38,7 @@ void main() {
     repository = AnimeCharactersRepository(
       networkDataSource: networkDataSource,
       networkInfo: networkInfo,
+      talker: talker,
     );
   });
 
@@ -37,6 +46,7 @@ void main() {
     const animeId = 1;
     final model =
         AnimeCharactersModel.fromJson(jsonDecode(dummyAnimeCharactersReader()));
+
     test('is network active', () async {
       when(networkInfo.isConnected).thenAnswer((_) async => true);
 
@@ -48,6 +58,7 @@ void main() {
     group('device have connection', () {
       setUp(() {
         when(networkInfo.isConnected).thenAnswer((_) async => true);
+        when(talker.handle(ServerException(), any)).thenReturn((_) => null);
       });
 
       test('returns AnimeCharactersModel', () async {
