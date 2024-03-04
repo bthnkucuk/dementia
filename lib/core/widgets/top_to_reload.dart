@@ -39,7 +39,7 @@ class TopToReload extends StatelessWidget {
             SizedBox(height: _type == _TopToReloadType.bottom ? 10 : 20),
             Text(
               'Tap to reload',
-              style: s14W500.copyWith(
+              style: s14W500(context).copyWith(
                 fontSize: _type == _TopToReloadType.bottom ? null : 18,
               ),
             ),

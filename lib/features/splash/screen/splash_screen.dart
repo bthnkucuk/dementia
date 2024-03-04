@@ -31,7 +31,7 @@ class SplashScreen extends HookWidget {
               ),
               Text(
                 appFlavor?.name ?? 'Dementia',
-                style: s18W700.copyWith(color: AppColors.black),
+                style: s18W700(context).copyWith(color: AppColors.black),
               )
             ],
           ),

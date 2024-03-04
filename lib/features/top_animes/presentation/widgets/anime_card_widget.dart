@@ -108,7 +108,8 @@ class AnimeCardWidget extends StatelessWidget {
                               const SizedBox(width: 5),
                               Text(
                                 "#${anime.rank}",
-                                style: s14W700.copyWith(color: AppColors.black),
+                                style: s14W700(context)
+                                    .copyWith(color: AppColors.black),
                               ),
                             ],
                           ),
@@ -124,7 +125,8 @@ class AnimeCardWidget extends StatelessWidget {
                               const SizedBox(width: 5),
                               Text(
                                 "#${anime.popularity}",
-                                style: s14W700.copyWith(color: AppColors.black),
+                                style: s14W700(context)
+                                    .copyWith(color: AppColors.black),
                               ),
                             ],
                           ),
@@ -136,7 +138,8 @@ class AnimeCardWidget extends StatelessWidget {
                             children: [
                               Text(
                                 anime.type!,
-                                style: s14W700.copyWith(color: AppColors.black),
+                                style: s14W700(context)
+                                    .copyWith(color: AppColors.black),
                               ),
                             ],
                           ),
@@ -148,7 +151,8 @@ class AnimeCardWidget extends StatelessWidget {
                             children: [
                               Text(
                                 '${anime.episodes!} Episodes',
-                                style: s14W700.copyWith(color: AppColors.black),
+                                style: s14W700(context)
+                                    .copyWith(color: AppColors.black),
                               ),
                             ],
                           ),

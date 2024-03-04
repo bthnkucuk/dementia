@@ -15,7 +15,8 @@ class _SectionTitle extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(title, style: s20W700.copyWith(color: AppColors.black)),
+            Text(title,
+                style: s20W700(context).copyWith(color: AppColors.black)),
             if (onPressed != null)
               const Icon(
                 Icons.arrow_forward_ios,
@@ -43,7 +44,7 @@ class _InformationElement extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: s14W500.copyWith(color: AppColors.black)),
+          Text(title, style: s14W500(context).copyWith(color: AppColors.black)),
           const SizedBox(height: 3),
           Opacity(
             opacity: 0.7,
@@ -114,7 +115,7 @@ class _RedirectButton extends StatelessWidget {
           children: [
             icon.toIcon(),
             const SizedBox(width: 5),
-            Text(title, style: s16W400),
+            Text(title, style: s16W400(context)),
           ],
         ),
       ),

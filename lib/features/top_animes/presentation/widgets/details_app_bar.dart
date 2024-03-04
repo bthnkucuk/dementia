@@ -57,7 +57,8 @@ class DetailsAppBar extends StatelessWidget {
                 children: [
                   if (animeGeneralInfo.title != null)
                     Text(animeGeneralInfo.title!,
-                        style: s14W700.copyWith(color: AppColors.primaryColor)),
+                        style: s14W700(context)
+                            .copyWith(color: AppColors.primaryColor)),
                   const SizedBox(height: 8),
                   Row(
                     children: [
@@ -69,8 +70,8 @@ class DetailsAppBar extends StatelessWidget {
                             const SizedBox(width: 5),
                             Text(
                               animeGeneralInfo.year.toString(),
-                              style: s12W400.copyWith(
-                                  color: AppColors.primaryColor),
+                              style: s12W400(context)
+                                  .copyWith(color: AppColors.primaryColor),
                             ),
                             const SizedBox(width: 20),
                           ],
@@ -82,8 +83,8 @@ class DetailsAppBar extends StatelessWidget {
                           const SizedBox(width: 5),
                           Text(
                             "${(animeGeneralInfo.score / 2).toStringAsFixed(1)} (MAL)",
-                            style:
-                                s12W400.copyWith(color: AppColors.primaryColor),
+                            style: s12W400(context)
+                                .copyWith(color: AppColors.primaryColor),
                           ),
                         ],
                       )
@@ -97,7 +98,8 @@ class DetailsAppBar extends StatelessWidget {
                           animeGeneralInfo.background!,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
-                          style: s12W400.copyWith(color: AppColors.white),
+                          style:
+                              s12W400(context).copyWith(color: AppColors.white),
                         ),
                       ],
                     ),

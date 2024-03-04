@@ -60,6 +60,7 @@ class AnimeHomeScreen extends HookWidget {
       body: Column(
         children: [
           HomeFilterBar(
+              key: const Key('homeFilterBarKey'),
               selectedTypeFilter: selectedTypeFilter.value,
               onChanged: (value) {
                 selectedTypeFilter.value = value;
@@ -92,13 +93,16 @@ class AnimeHomeScreen extends HookWidget {
                           itemBuilder: (BuildContext context, int index) {
                             final anime = state.singleAnimeGeneralInfoList
                                 .elementAt(index);
+
                             if (index <
                                 state.singleAnimeGeneralInfoList.length - 1) {
                               return AnimeCardWidget(anime: anime);
                             } else {
                               return Column(
                                 children: [
-                                  AnimeCardWidget(anime: anime),
+                                  AnimeCardWidget(
+                                      key: const Key('animeCardWidgetKey'),
+                                      anime: anime),
                                   if (state is TopAnimesErrorMore)
                                     TopToReload.bottom(
                                         onTap: () => loadNextPage())

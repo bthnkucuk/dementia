@@ -44,7 +44,7 @@ class CharacterWidget extends StatelessWidget {
             character.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: s12W400,
+            style: s12W400(context),
           ),
         ],
       ),
