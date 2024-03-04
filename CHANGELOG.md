@@ -1,4 +1,11 @@
 ## MINOR FIXES
+- Title: screen widget tests
+- Description: 
+- Date: 04.03.2024
+- Version: 1.0.0+17
+- Author: ([bthnkucuk](https://github.com/bthnkucuk/dementia/commit/2c27ed1))
+
+## MINOR FIXES
 - Title: refactor
 - Description: 
 - Date: 04.03.2024
