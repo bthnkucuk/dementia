@@ -24,6 +24,16 @@ Flutter anime app with jikan api. User can see top animes, filter animes, see an
 
  <br />
 
+## Screens
+
+- **Splash Screen:** Splash screen for application.
+- **Home Screen:** Home screen for application. It shows top animes.
+- **Details Screen:** Details screen for anime. It shows details of anime.
+- **Characters Screen:** Characters screen for anime. It shows characters of anime.
+- **Reviews Screen:** Reviews screen for anime. It shows reviews of anime.
+
+ <br />
+
 ## Flavors
 
 <img src="screenshots/flavors.png">
