@@ -2,6 +2,13 @@
 - Title: Update README.md
 - Description: 
 - Date: 04.03.2024
+- Version: 1.0.0+14
+- Author: ([bthnkucuk](https://github.com/bthnkucuk/dementia/commit/6b6deab))
+
+## MINOR FIXES
+- Title: Update README.md
+- Description: 
+- Date: 04.03.2024
 - Version: 1.0.0+13
 - Author: ([bthnkucuk](https://github.com/bthnkucuk/dementia/commit/7cdbd9a))
 
