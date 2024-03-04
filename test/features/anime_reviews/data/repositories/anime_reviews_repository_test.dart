@@ -6,7 +6,6 @@ import 'package:dementia/core/helpers/network_info.dart';
 import 'package:dementia/features/anime_reviews/data/data_sources/anime_reviews_network_data_source.dart.dart';
 import 'package:dementia/features/anime_reviews/data/models/anime_reviews/anime_reviews_model.dart';
 import 'package:dementia/features/anime_reviews/data/repositories/anime_reviews_repository.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mockito/annotations.dart';

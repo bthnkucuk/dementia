@@ -6,7 +6,6 @@ import 'package:dementia/core/helpers/network_info.dart';
 import 'package:dementia/features/top_animes/data/data_sources/top_animes_network_data_source.dart.dart';
 import 'package:dementia/features/top_animes/data/models/top_animes/top_animes_model.dart';
 import 'package:dementia/features/top_animes/data/repositories/top_animes_repository.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mockito/annotations.dart';
@@ -29,8 +28,6 @@ void main() {
   late TopAnimesAnimeNetworkDataSource networkDataSource;
 
   late NetworkInfo networkInfo;
-
-  late FirebaseCrashlytics crashlytics;
 
   setUp(() {
     networkDataSource = MockTopAnimesAnimeNetworkDataSource();
