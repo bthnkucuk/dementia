@@ -196,3 +196,9 @@ Then you can run the application with this command.
 # production flavor
   flutter run -t lib/main_production.dart --flavor production
 ```
+
+<br />
+
+### If you are using vscode,
+
+.vscode/launch.json is created for development, staging, and production flavors. You can run the application with vscode.
