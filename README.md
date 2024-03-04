@@ -177,8 +177,6 @@ Then you can use flutter version with this command.
 Then you must generate files with this command.
 
 ```bash
-  flutter packages pub run build_runner build
-
   # for build
   flutter pub run build_runner build --delete-conflicting-outputs
 
